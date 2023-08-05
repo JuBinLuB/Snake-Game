@@ -21,11 +21,11 @@ void DesenharComida();
 
 void DesenharCobra();
 
+void MoverCobra(int key);
+
 void VerificarColisoes();
 
 void VerificarComida();
-
-void Mover(int key);
 
 void Randomizar(TItem *item);
 

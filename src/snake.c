@@ -14,7 +14,7 @@
 #define CORES 3
 
 /***********************************
- *   DEFINICAO DE VARIAVEIS GLOBAIS
+ * VARIAVEIS GLOBAIS
  ***********************************/
 TFila snake;
 TItem apple;
@@ -111,6 +111,38 @@ void DesenharCobra() {
     VerificarComida();
 }
 
+void MoverCobra(int key) {
+    // Logica para a leitura da entrada de dados pelo teclado.
+    switch (key) {
+    case GLUT_KEY_UP:
+        if (DIRECAO != DOWN) {
+            DIRECAO = UP;
+        }
+        break;
+    case GLUT_KEY_DOWN:
+        if (DIRECAO != UP) {
+            DIRECAO = DOWN;
+        }
+        break;
+    case GLUT_KEY_LEFT:
+        if (DIRECAO != RIGHT) {
+            DIRECAO = LEFT;
+        }
+        break;
+    case GLUT_KEY_RIGHT:
+        if (DIRECAO != LEFT) {
+            DIRECAO = RIGHT;
+        }
+        break;
+    default:
+        // Liberando a memoria alocada para a SNAKE.
+        LiberarFila(&snake);
+        // Finaliza a aplicacao.
+        exit(0);
+        break;
+    }
+}
+
 void VerificarColisoes() {
     // Verifica se a cabeca cruzou a borda esquerda da arena.
     if (snake.frente->item.x < 0) {
@@ -134,40 +166,7 @@ void VerificarComida() {
     // Verificando se a cobra comeu a comida.
     if ((snake.frente->item.x == apple.x) && (snake.frente->item.y == apple.y)) {
         EATEN = 1;
-        // SCORE++;
-    }
-}
-
-void Mover(int key) {
-    // Logica para a leitura da entrada de dados pelo teclado.
-    switch (key) {
-    case GLUT_KEY_UP:
-        if (DIRECAO != DOWN) {
-            DIRECAO = UP;
-        }
-        break;
-    case GLUT_KEY_DOWN:
-        if (DIRECAO != UP) {
-            DIRECAO = DOWN;
-        }
-        break;
-    case GLUT_KEY_LEFT:
-        if (DIRECAO != RIGHT) {
-            DIRECAO = LEFT;
-        }
-        break;
-    case GLUT_KEY_RIGHT:
-        if (DIRECAO != LEFT) {
-            DIRECAO = RIGHT;
-        }
-        break;
-    case GLUT_KEY_F1:
-        // Liberando a memoria alocada para a SNAKE.
-        LiberarFila(&snake);
-
-        // Finaliza a aplicacao.
-        exit(0);
-        break;
+        SCORE++;
     }
 }
 

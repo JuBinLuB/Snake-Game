@@ -2,17 +2,23 @@
 #include <stdlib.h>
 #include <GL/gl.h>
 #include <GL/glut.h>
+#include <string.h>
 
 #include "snake.h"
 
 #define ALTURA 20
 #define LARGURA 20
-#define VELOCIDADE 14
+#define VELOCIDADE 12
 
 /***********************************
- * FUNCOES
+ * VARIAVEIS GLOBAIS
  ***********************************/
-// Inicializa parametros de renderizacao.
+extern int SCORE;
+
+/***********************************
+ * FUNCOES CALLBACK
+ ***********************************/
+// Funcao callback que recebe fonte e texto para ser exibido na tela usando caracteres bitmap.
 void Inicializa();
 
 // Funcao callback chamada para fazer o desenho da janela.
@@ -47,9 +53,9 @@ int main(int argc, char **argv) {
     // Cria a janela e define o texto que sera exibido na barra de titulo.
     glutCreateWindow("Snake");
 
-    /***********************************
-     * FUNCOES CALLBACK
-     ***********************************/
+    /********************************************
+     * TRATAMENTO DE EVENTOS E FUNCOES CALLBACK
+     ********************************************/
     // Responsavel por redesenhar a janela sempre que necessario.
     glutDisplayFunc(Desenha);
     // Trata o evento referente ao redimensionamento da janela.
@@ -59,7 +65,7 @@ int main(int argc, char **argv) {
     // Trata o evento de pressionar teclas especiais do teclado.
     glutSpecialFunc(TeclasEspeciais);
 
-    // Inicializacao.
+    // Inicializacao de parametros.
     Inicializa();
 
     // Inicia o processamento e aguarda interacoes do usuario.
@@ -90,9 +96,19 @@ void Desenha() {
     // Define a cor para o texto.
     glColor3f(1.0, 1.0, 1.0);
 
+    // Declaracao da string que sera exibida na tela.
+    char mensagemScore[20] = "SCORE: ";
+
+    // Convertendo o inteiro "SCORE" em texto e armazenando-o na string "textoScore".
+    char textoScore[5];
+    sprintf(textoScore, "%d", SCORE);
+    
+    // Concatenando a string "textoScore" ao final da string "mensagemScore".
+    strcat(mensagemScore, textoScore);
+
     // Exibicao do SCORE na tela usando caracteres bitmap.
     glRasterPos2f(((LARGURA - 2) / 2), ALTURA - 0.5);
-    DesenhaTexto(GLUT_BITMAP_HELVETICA_18, "SCORE: ");
+    DesenhaTexto(GLUT_BITMAP_HELVETICA_18, mensagemScore);
     
     // Executa os comandos OpenGL.
     glutSwapBuffers();
@@ -141,5 +157,5 @@ void Timer(int valor) {
 
 void TeclasEspeciais(int key, int x, int y) {
     // Funcao para efetuar a leitura dos dados e mover o objeto.
-    Mover(key);
+    MoverCobra(key);
 }
