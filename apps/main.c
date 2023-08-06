@@ -11,11 +11,6 @@
 #define VELOCIDADE 12
 
 /***********************************
- * VARIAVEIS GLOBAIS
- ***********************************/
-extern int SCORE;
-
-/***********************************
  * FUNCOES CALLBACK
  ***********************************/
 // Funcao callback que recebe fonte e texto para ser exibido na tela usando caracteres bitmap.
@@ -96,15 +91,11 @@ void Desenha() {
     // Define a cor para o texto.
     glColor3f(1.0, 1.0, 1.0);
 
-    // Declaracao da string que sera exibida na tela.
-    char mensagemScore[20] = "SCORE: ";
+    // String que sera exibida na tela.
+    char mensagemScore[20];
 
-    // Convertendo o inteiro "SCORE" em texto e armazenando-o na string "textoScore".
-    char textoScore[5];
-    sprintf(textoScore, "%d", SCORE);
-    
-    // Concatenando a string "textoScore" ao final da string "mensagemScore".
-    strcat(mensagemScore, textoScore);
+    // Configura o SCORE que sera exibido na tela, armazenando-o na string "mensagemScore".
+    ConfigurarPlacar(mensagemScore);
 
     // Exibicao do SCORE na tela usando caracteres bitmap.
     glRasterPos2f(((LARGURA - 2) / 2), ALTURA - 0.5);
@@ -115,8 +106,8 @@ void Desenha() {
 }
 
 void DesenhaTexto(void *font, char *string) {
-    // Exibe caractere a caractere.
     while(*string) {
+        // Exibe um caractere do tipo bitmap.
         glutBitmapCharacter(font, *string++);
     }
 }

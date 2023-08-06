@@ -170,9 +170,21 @@ void VerificarComida() {
     }
 }
 
+void ConfigurarPlacar(char *string) {
+    strcpy(string, "SCORE: ");
+
+    // String auxiliar para armazenar o SCORE.
+    char textoScore[10];
+
+    // Convertendo o inteiro "SCORE" em texto e armazenando-o na string "textoScore".
+    sprintf(textoScore, "%d", SCORE);
+
+    // Concatenando a string "textoScore" ao final de "string".
+    strcat(string, textoScore);
+}
+
 void Randomizar(TItem *item) {
     srand(time(NULL));
     item->x = 1 + rand() % (LARGURA - 2);
     item->y = 1 + rand() % (ALTURA - 2);
-    // item->cor = 1 + rand() % CORES;
 }

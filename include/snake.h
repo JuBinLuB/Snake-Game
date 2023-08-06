@@ -27,6 +27,8 @@ void VerificarColisoes();
 
 void VerificarComida();
 
+void ConfigurarPlacar(char *string);
+
 void Randomizar(TItem *item);
 
 #endif // SNAKE_H_INCLUDED
