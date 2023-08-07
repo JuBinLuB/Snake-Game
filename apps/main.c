@@ -8,11 +8,11 @@
 
 #define ALTURA 20
 #define LARGURA 20
-#define VELOCIDADE 12
+#define VELOCIDADE 14
 
-/***********************************
+/********************************************
  * FUNCOES CALLBACK
- ***********************************/
+ ********************************************/
 // Funcao callback que recebe fonte e texto para ser exibido na tela usando caracteres bitmap.
 void Inicializa();
 
@@ -38,9 +38,9 @@ int main(int argc, char **argv) {
     // Define o modo de operação da Glut.
     glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
 
-    /***********************************
+    /********************************************
      * CONFIGURACOES DA JANELA
-     ***********************************/
+     ********************************************/
     // Define as coordenadas X e Y onde ficara o canto superior esquerdo da janela.
     glutInitWindowPosition(450, 100);
     // Define a largura e a altura do tamanho da janela. 

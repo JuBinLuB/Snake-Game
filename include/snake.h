@@ -21,6 +21,8 @@ void DesenharComida();
 
 void DesenharCobra();
 
+void GerarComida();
+
 void MoverCobra(int key);
 
 void VerificarColisoes();
@@ -28,7 +30,5 @@ void VerificarColisoes();
 void VerificarComida();
 
 void ConfigurarPlacar(char *string);
-
-void Randomizar(TItem *item);
 
 #endif // SNAKE_H_INCLUDED

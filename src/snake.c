@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 #include <GL/gl.h>
 #include <GL/glut.h>
+#include <time.h>
 
 #include "snake.h"
 
@@ -11,11 +11,11 @@
 #define LEFT 3
 #define RIGHT 4
 
-#define CORES 3
+// #define CORES 3
 
-/***********************************
+/********************************************
  * VARIAVEIS GLOBAIS
- ***********************************/
+ ********************************************/
 TFila snake;
 TItem apple;
 int LARGURA;
@@ -34,8 +34,8 @@ void Configurar() {
     FFVazia(&snake);
 
     // Define a posicao inicial da snake como sendo o centro da arena.
-    snake.frente->item.x = LARGURA / 2;
-    snake.frente->item.y = ALTURA / 2;
+    snake.tras->item.x = LARGURA / 2;
+    snake.tras->item.y = ALTURA / 2;
 
     // Define a direcao inicial de movimento.
     DIRECAO = RIGHT;
@@ -55,7 +55,7 @@ void DesenharCampo() {
 
 void DesenharMoldura(int x, int y) {
     // Altera o tamanho do ponto.
-    glPointSize(2);
+    glPointSize(1.88);
 
     // Especificacao de primitivas graficas.
     glBegin(GL_POINTS);
@@ -65,46 +65,74 @@ void DesenharMoldura(int x, int y) {
     glEnd();
 }
 
+void GerarComida() {
+    srand(time(NULL));
+    apple.x = 1 + rand() % (LARGURA - 1);
+    apple.y = 1 + rand() % (ALTURA - 1);
+}
+
 void DesenharComida() {
     if (EATEN) {
         // Gera coordenadas aleatorias para a comida.
-        Randomizar(&apple);
+        GerarComida();
     }
 
     // Define o valor da variavel como falso.
     EATEN = 0;
 
     // Define a cor da comida.
-    glColor3f(1.0, 0.0, 0.0); 
+    glColor3f(1.0, 0.5, 0.5); 
 
     // Desenha a comida.
     glRectd(apple.x, apple.y, apple.x + 1, apple.y + 1);
 }
 
 void DesenharCobra() {
+    // Gera uma nova celula na direcao do movimento.
+    Enfileirar(snake.tras->item, &snake);
+
     // Altera a DIRECAO do movimento da snake baseado nas interacoes do usuario.
     switch(DIRECAO) {
     case UP:
-        snake.frente->item.y++;
+        // snake.frente->item.y++;
+        snake.tras->item.y++;
         break;
     case DOWN:
-        snake.frente->item.y--;
+        // snake.frente->item.y--;
+        snake.tras->item.y--;
         break;
     case RIGHT:
-        snake.frente->item.x++;
+        // snake.frente->item.x++;
+        snake.tras->item.x++;
         break;
     case LEFT:
-        snake.frente->item.x--;
+        // snake.frente->item.x--;
+        snake.tras->item.x--;
         break;
     }
 
-    // Define a cor da cabeca da snake.
-    glColor3f(0.5, 1.0, 0.5);
+    // Celula auxiliar para percorrer a Fila e desenhar o corpo da snake.
+    TCelula *SnakeCorpo = snake.frente;
 
-    // Desenha a cabeca da snake.
-    glRectd(snake.frente->item.x, snake.frente->item.y, snake.frente->item.x + 1, snake.frente->item.y + 1);
+    for (int i = 0; i < snake.tamanho; i++) {
+        if (SnakeCorpo != snake.frente) {
+            // Define a cor do corpo da snake.
+            glColor3f(0.6, 0.88, 0.6);
 
-    // Verifica se a cabeca cruzou a borda esquerda da arena.
+            // Desenha o corpo da snake.
+            glRectd(SnakeCorpo->item.x, SnakeCorpo->item.y, SnakeCorpo->item.x + 1, SnakeCorpo->item.y + 1);
+        } else {
+            // Define a cor da cabeca da snake.
+            glColor3f(0.5, 1.0, 0.5);
+
+            // Desenha a cabeca da snake.
+            glRectd(snake.tras->item.x, snake.tras->item.y, snake.tras->item.x + 1, snake.tras->item.y + 1);
+        }
+        // Avanca "SnakeCorpo" para a proxima posicao da Fila.
+        SnakeCorpo = SnakeCorpo->prox;
+    }
+
+    // Verifica se a snake colidiu consigo mesma ou cruzou as bordas da arena.
     VerificarColisoes();
 
     // Verifica se comeu a comida.
@@ -145,28 +173,48 @@ void MoverCobra(int key) {
 
 void VerificarColisoes() {
     // Verifica se a cabeca cruzou a borda esquerda da arena.
-    if (snake.frente->item.x < 0) {
-        snake.frente->item.x = LARGURA - 1;
+    if (snake.tras->item.x < 0) {
+        snake.tras->item.x = LARGURA - 1;
     }
     // Verifica se a cabeca cruzou a borda direita da arena.
-    if (snake.frente->item.x > LARGURA - 1) {
-        snake.frente->item.x = 0;
+    if (snake.tras->item.x > LARGURA - 1) {
+        snake.tras->item.x = 0;
     }
     // Verifica se a cabeca cruzou a borda inferior da arena.
-    if (snake.frente->item.y < 0) {
-        snake.frente->item.y = ALTURA - 1;
+    if (snake.tras->item.y < 0) {
+        snake.tras->item.y = ALTURA - 1;
     }
     // Verifica se a cabeca cruzou a borda superior da arena.
-    if (snake.frente->item.y > ALTURA - 1) {
-        snake.frente->item.y = 0;
+    if (snake.tras->item.y > ALTURA - 1) {
+        snake.tras->item.y = 0;
+    }
+
+    // Celula auxiliar para percorrer a Fila.
+    TCelula *Aux = snake.frente;
+
+    // Verifica se a snake colidiu consigo mesma.
+    for (int i = 0; i < snake.tamanho; i++) {
+        if (snake.tras->item.x == Aux->item.x && snake.tras->item.y == Aux->item.y) {
+            // Libera a memoria alocada para a SNAKE.
+            LiberarFila(&snake);
+            // Finaliza a aplicacao.
+            exit(0);
+        }
+        Aux = Aux->prox;
     }
 }
 
 void VerificarComida() {
+    // Celula auxiliar representando a cauda da snake.
+    TCelula *SnakeCauda = snake.frente;
+
     // Verificando se a cobra comeu a comida.
-    if ((snake.frente->item.x == apple.x) && (snake.frente->item.y == apple.y)) {
+    if ((snake.tras->item.x == apple.x) && (snake.tras->item.y == apple.y)) {
         EATEN = 1;
         SCORE++;
+    } else {
+        // Desenfileira a cauda para manter o tamanho da snake.
+        Desenfileirar(&snake, &SnakeCauda->item);
     }
 }
 
@@ -181,10 +229,4 @@ void ConfigurarPlacar(char *string) {
 
     // Concatenando a string "textoScore" ao final de "string".
     strcat(string, textoScore);
-}
-
-void Randomizar(TItem *item) {
-    srand(time(NULL));
-    item->x = 1 + rand() % (LARGURA - 2);
-    item->y = 1 + rand() % (ALTURA - 2);
 }
