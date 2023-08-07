@@ -42,7 +42,7 @@ Seta para a esquerda: Mover para a esquerda
 
 Seta para a direita: Mover para a direita
 
-Pressione a tecla CTRL, ou qualquer outro caractere especial, para sair do jogo.
+Pressione a tecla CTRL, ou qualquer outra tecla especial, para sair do jogo.
 
 ## Créditos
 
