@@ -1,6 +1,6 @@
 # TRABALHO PRÁTICO: SNAKE
 
-README em construção...
+Este é um projeto de jogo da Snake desenvolvido como parte do trabalho prático da disciplina de Algoritmos e Estrutura de Dados I na Universidade Federal de Ouro Preto (UFOP). O jogo foi implementado utilizando a biblioteca FreeGLUT, e o objetivo é controlar a cobra para comer os alimentos e crescer o máximo possível.
 
 ## Requisitos
 
@@ -18,11 +18,19 @@ Certifique-se de ter os seguintes itens instalados antes de executar o jogo:
 
   3. Use o arquivo Makefile para compilar o jogo, digitando no terminal o seguinte comando:
 
-     ```mingw32-make``` ou ```Makefile```
+     ```mingw32-make```
+
+     ou
+
+     ```Makefile```
   
   5. Após a compilação bem-sucedida, execute o jogo com o seguinte comando:
 
-     ```mingw32-make run``` ou ```Makefile run```
+     ```mingw32-make run```
+
+     ou
+
+     ```Makefile run```
 
 ## Controles
 
@@ -34,6 +42,18 @@ Seta para a esquerda: Mover para a esquerda
 
 Seta para a direita: Mover para a direita
 
-```CTRL```: Sair do jogo
+Pressione a tecla CTRL, ou qualquer outro caractere especial, para sair do jogo.
 
-Esse jogo é um trabalho prático da disciplina de Algoritmos e Estrutura de Dados I da Universidade Federal de Ouro Preto - UFOP, desenvolvido utilizando a biblioteca freeGLUT.
+## Créditos
+
+Este jogo foi desenvolvido como parte do trabalho prático da disciplina de Algoritmos e Estrutura de Dados I da UFOP, utilizando a biblioteca FreeGLUT. A implementação do Snake Game foi uma ótima oportunidade de praticar conceitos de programação e estruturas de dados.
+
+## Melhorias Futuras
+
+Este projeto pode ser expandido e aprimorado de várias maneiras. Algumas ideias de melhorias futuras incluem:
+  
+  ● Implementar níveis de dificuldade crescentes.
+
+  ● Implementar uma interface de usuário.
+
+Divirta-se jogando Snake e explorando os conceitos de programação por trás do jogo!
