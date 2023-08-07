@@ -7,6 +7,7 @@ README em construção...
 Certifique-se de ter os seguintes itens instalados antes de executar o jogo:
 
   ● Compilador C/C++
+  
   ● Biblioteca FreeGLUT
 
 # Como Compilar e Executar
