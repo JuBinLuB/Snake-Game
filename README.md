@@ -2,7 +2,7 @@
 
 README em construção...
 
-# Requisitos
+## Requisitos
 
 Certifique-se de ter os seguintes itens instalados antes de executar o jogo:
 
@@ -10,7 +10,7 @@ Certifique-se de ter os seguintes itens instalados antes de executar o jogo:
   
   ● Biblioteca FreeGLUT
 
-# Como Compilar e Executar
+## Como Compilar e Executar
 
   1. Clone ou faça o download deste repositório.
 
@@ -18,18 +18,22 @@ Certifique-se de ter os seguintes itens instalados antes de executar o jogo:
 
   3. Use o arquivo Makefile para compilar o jogo, digitando no terminal o seguinte comando:
 
-     mingw32-make ou Makefile
+     ```mingw32-make``` ou ```Makefile```
   
   5. Após a compilação bem-sucedida, execute o jogo com o seguinte comando:
 
-     mingw32-make run ou Makefile run
+     ```mingw32-make run``` ou ```Makefile run```
 
-# Controles
+## Controles
 
 Seta para cima: Mover para cima
+
 Seta para baixo: Mover para baixo
+
 Seta para a esquerda: Mover para a esquerda
+
 Seta para a direita: Mover para a direita
-'CTRL': Sair do jogo
+
+```CTRL```: Sair do jogo
 
 Esse jogo é um trabalho prático da disciplina de Algoritmos e Estrutura de Dados I da Universidade Federal de Ouro Preto - UFOP, desenvolvido utilizando a biblioteca freeGLUT.
