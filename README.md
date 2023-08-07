@@ -17,9 +17,11 @@ Certifique-se de ter os seguintes itens instalados antes de executar o jogo:
   2. Navegue até a pasta do jogo no terminal.
 
   3. Use o arquivo Makefile para compilar o jogo, digitando no terminal o seguinte comando:
+
      mingw32-make ou Makefile
   
-  4. Após a compilação bem-sucedida, execute o jogo com o seguinte comando:
+  5. Após a compilação bem-sucedida, execute o jogo com o seguinte comando:
+
      mingw32-make run ou Makefile run
 
 # Controles
