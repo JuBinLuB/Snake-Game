@@ -22,7 +22,7 @@ Certifique-se de ter os seguintes itens instalados antes de executar o jogo:
 
      ou
 
-     ```Makefile```
+     ```Make```
   
   5. Após a compilação bem-sucedida, execute o jogo com o seguinte comando:
 
@@ -30,7 +30,7 @@ Certifique-se de ter os seguintes itens instalados antes de executar o jogo:
 
      ou
 
-     ```Makefile run```
+     ```Make run```
 
 ## Controles
 
