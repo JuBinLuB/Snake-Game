@@ -6,22 +6,13 @@
 
 #include "snake.h"
 
-#define UP 1
-#define DOWN 2
-#define LEFT 3
-#define RIGHT 4
-
-// #define CORES 3
-
-/********************************************
- * VARIAVEIS GLOBAIS
- ********************************************/
+// Variaveis globais.
 TFila snake;
-TItem apple;
+TItem comida;
 int LARGURA;
 int ALTURA;
 int DIRECAO;
-int EATEN;
+int CONSUMIDO;
 int SCORE;
 
 void IniciarCampo(int x, int y) {
@@ -41,7 +32,7 @@ void Configurar() {
     DIRECAO = RIGHT;
 
     // Inicializacao de demais variaveis.
-    EATEN = 1;
+    CONSUMIDO = 1;
     SCORE = 0;
 }
 
@@ -65,26 +56,26 @@ void DesenharMoldura(int x, int y) {
     glEnd();
 }
 
-void GerarComida() {
-    srand(time(NULL));
-    apple.x = 1 + rand() % (LARGURA - 1);
-    apple.y = 1 + rand() % (ALTURA - 1);
-}
-
 void DesenharComida() {
-    if (EATEN) {
+    if (CONSUMIDO) {
         // Gera coordenadas aleatorias para a comida.
         GerarComida();
     }
 
     // Define o valor da variavel como falso.
-    EATEN = 0;
+    CONSUMIDO = 0;
 
     // Define a cor da comida.
     glColor3f(1.0, 0.5, 0.5); 
 
     // Desenha a comida.
-    glRectd(apple.x, apple.y, apple.x + 1, apple.y + 1);
+    glRectd(comida.x, comida.y, comida.x + 1, comida.y + 1);
+}
+
+void GerarComida() {
+    srand(time(NULL));
+    comida.x = 1 + rand() % (LARGURA - 1);
+    comida.y = 1 + rand() % (ALTURA - 1);
 }
 
 void DesenharCobra() {
@@ -94,19 +85,15 @@ void DesenharCobra() {
     // Altera a DIRECAO do movimento da snake baseado nas interacoes do usuario.
     switch(DIRECAO) {
     case UP:
-        // snake.frente->item.y++;
         snake.tras->item.y++;
         break;
     case DOWN:
-        // snake.frente->item.y--;
         snake.tras->item.y--;
         break;
     case RIGHT:
-        // snake.frente->item.x++;
         snake.tras->item.x++;
         break;
     case LEFT:
-        // snake.frente->item.x--;
         snake.tras->item.x--;
         break;
     }
@@ -140,24 +127,28 @@ void DesenharCobra() {
 }
 
 void MoverCobra(int key) {
-    // Logica para a leitura da entrada de dados pelo teclado.
+    // Logica para a leitura da entrada de dados, verificando os valores callback de teclado.
     switch (key) {
     case GLUT_KEY_UP:
+        // Caso a tecla pressionada seja "UP" e "DIRECAO" for diferente de "DOWN", define a direcao para CIMA.
         if (DIRECAO != DOWN) {
             DIRECAO = UP;
         }
         break;
     case GLUT_KEY_DOWN:
+        // Caso a tecla pressionada seja "DOWN" e "DIRECAO" for diferente de "UP", define a direcao para BAIXO.
         if (DIRECAO != UP) {
             DIRECAO = DOWN;
         }
         break;
     case GLUT_KEY_LEFT:
+        // Caso a tecla pressionada seja "LEFT" e "DIRECAO" for diferente de "RIGHT", define a direcao para ESQUERDA.
         if (DIRECAO != RIGHT) {
             DIRECAO = LEFT;
         }
         break;
     case GLUT_KEY_RIGHT:
+        // Caso a tecla pressionada seja "RIGTH" e "DIRECAO" for diferente de "LEFT", define a direcao para DIREITA.
         if (DIRECAO != LEFT) {
             DIRECAO = RIGHT;
         }
@@ -165,6 +156,7 @@ void MoverCobra(int key) {
     default:
         // Liberando a memoria alocada para a SNAKE.
         LiberarFila(&snake);
+
         // Finaliza a aplicacao.
         exit(0);
         break;
@@ -197,6 +189,7 @@ void VerificarColisoes() {
         if (snake.tras->item.x == Aux->item.x && snake.tras->item.y == Aux->item.y) {
             // Libera a memoria alocada para a SNAKE.
             LiberarFila(&snake);
+
             // Finaliza a aplicacao.
             exit(0);
         }
@@ -209,8 +202,8 @@ void VerificarComida() {
     TCelula *SnakeCauda = snake.frente;
 
     // Verificando se a cobra comeu a comida.
-    if ((snake.tras->item.x == apple.x) && (snake.tras->item.y == apple.y)) {
-        EATEN = 1;
+    if ((snake.tras->item.x == comida.x) && (snake.tras->item.y == comida.y)) {
+        CONSUMIDO = 1;
         SCORE++;
     } else {
         // Desenfileira a cauda para manter o tamanho da snake.

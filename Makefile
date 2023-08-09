@@ -25,6 +25,7 @@ all: lib myapps
 #	 "lib:" é chamada logo após "all:" iniciar sua execução.
 #	 Logo, "lib:" irá chamar a target "$(OBJ)/%.o", através do respectivo arquivo "$(OBJ)/nome_arquivo.o".
 lib: $(OBJ)/snake.o \
+	 $(OBJ)/interface.o \
 	 $(OBJ)/fila.o
 	ar -rcs $(LIB)/libsnake.a $(OBJ)/*.o
 
