@@ -1,6 +1,6 @@
 # TRABALHO PRÁTICO: SNAKE
 
-Este é um projeto de jogo da Snake desenvolvido como parte do trabalho prático da disciplina de Algoritmos e Estrutura de Dados I na Universidade Federal de Ouro Preto (UFOP). O jogo foi implementado utilizando a biblioteca FreeGLUT, e o objetivo é controlar a cobra para comer os alimentos e crescer o máximo possível.
+Este projeto é um jogo de Snake desenvolvido como parte do trabalho prático da disciplina de Algoritmos e Estrutura de Dados I da Universidade Federal de Ouro Preto (UFOP). O jogo foi implementado utilizando a biblioteca FreeGLUT, e o objetivo é controlar a cobra para comer os alimentos e crescer o máximo possível.
 
 ## Requisitos
 
