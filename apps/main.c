@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <GL/gl.h>
 #include <GL/glut.h>
-#include <string.h>
 
 #include "interface.h"
 
