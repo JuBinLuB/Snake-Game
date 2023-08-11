@@ -97,9 +97,11 @@ void AlteraTamanhoJanela(GLsizei w, GLsizei h) {
 
     // Descreve uma matriz de perspectiva que produz uma projeção paralela.
     if (w <= h) {
+        // Ajusta a projeção para manter a proporção da janela.
         gluOrtho2D(0.0, LARGURA, 0.0, ALTURA * h / w);
     } else {
-        gluOrtho2D(0.0, LARGURA * w / h, 0.0, ALTURA);
+        // Ajusta a projeção em modo janela cheia.
+        gluOrtho2D(((-LARGURA * w / h) + 20) / 2, ((LARGURA * w / h) + 20) / 2, 0.0, ALTURA);
     }
 
     // Avisa a OpenGL que todas as futuras alterações irão afetar o que é desenhado.

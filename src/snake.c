@@ -38,8 +38,9 @@ void Configurar() {
 }
 
 void DesenharCampo() {
-    for (int i = 1; i < LARGURA; i++) {
-        for (int j = 1; j < ALTURA; j++) {
+    // Desenha a grade pontilhada do campo.
+    for (int i = 0; i <= LARGURA; i++) {
+        for (int j = 0; j <= ALTURA; j++) {
             DesenharMoldura(i, j);
         }
     }
