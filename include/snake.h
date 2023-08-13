@@ -30,7 +30,7 @@ void DesenharCobra();
 
 void GerarComida();
 
-void AtualizarCoresSnake();
+void AtualizarCoresCobra();
 
 void MoverCobra(int key);
 

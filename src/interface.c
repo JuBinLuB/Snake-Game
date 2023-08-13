@@ -38,7 +38,7 @@ void TratarEventos() {
     glutKeyboardFunc(Teclado);
 }
 
-void Menu() {
+void MenuPrincipal() {
     // Define a cor do texto.
     glColor3f(0.83, 0.82, 0.76);
 
@@ -69,9 +69,9 @@ void Desenha() {
     glClear(GL_COLOR_BUFFER_BIT);
 
     if (MENU_ABERTO) {
-        Menu();
+        MenuPrincipal();
     } else {
-        // Funcoes diretamente relacionadas ao jogo SNAKE.
+        // Funcoes diretamente relacionadas ao SNAKE.
         DesenharCampo();
         DesenharCobra();
         DesenharComida();

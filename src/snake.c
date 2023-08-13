@@ -122,8 +122,8 @@ void DesenharCobra() {
         break;
     }
 
-    // Atualizar as cores dos segmentos do corpo da cobra.
-    AtualizarCoresSnake();
+    // Atualiza as cores dos segmentos do corpo da snake.
+    AtualizarCoresCobra();
 
     // Celula auxiliar para percorrer a Fila e desenhar o corpo da snake.
     TCelula *SnakeCorpo = snake.frente;
@@ -189,23 +189,25 @@ void DesenharCobra() {
     VerificarComida();
 }
 
-void AtualizarCoresSnake() {
+void AtualizarCoresCobra() {
     // Celula auxiliar para percorrer a Fila e atualizar as cores dos segmentos do corpo da cobra.
     TCelula *Aux = snake.frente;
 
     // Armazena a cor do primeiro segmento.
     int corAnterior = Aux->item.cor;
 
+    // Percorre os segmentos da snake ate o penultimo, o imediatamente anterior ao final da Fila.
     while (Aux->prox != snake.tras) {
         // Armazena a cor atual do segmento.
         int corAtual = Aux->prox->item.cor;
 
-        // Atribuímos a cor anterior ao segmento atual.
+        // Atribui a cor do segmento anterior ao segmento atual.
         Aux->prox->item.cor = corAnterior;
-        // Atribuimos a cor anterior para a cor atual.
+
+        // Atualiza a cor anterior para a cor atual
         corAnterior = corAtual;
 
-        // Avanca para a proxima celula da Fila.
+        // Avanca "Aux" para a proxima posicao da Fila.
         Aux = Aux->prox;
     }
 }
@@ -275,13 +277,13 @@ void VerificarComida() {
     // Celula auxiliar representando a cauda da snake.
     TCelula *SnakeCauda = snake.frente;
 
-    // Verificando se a cobra comeu a comida.
+    // Verificando se a snake comeu a comida.
     if ((snake.tras->item.x == comida.x) && (snake.tras->item.y == comida.y)) {
         CONSUMIDO = 1;
         SCORE++;
         
-        // A cor da comida é inserida no final da cobra.
-        snake.frente->item.cor = comida.cor;
+        // Atribui a cor da comida ao segmento da snake que representa a cauda.
+        SnakeCauda->item.cor = comida.cor;
     } else {
         // Desenfileira a cauda para manter o tamanho da snake.
         Desenfileirar(&snake, &SnakeCauda->item);

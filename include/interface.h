@@ -16,7 +16,7 @@ void ConfigurarJanela();
 
 void TratarEventos();
 
-void Menu();
+void MenuPrincipal();
 
 void Inicializa();
 
