@@ -29,6 +29,9 @@ void Configurar() {
     snake.tras->item.x = LARGURA / 2;
     snake.tras->item.y = ALTURA / 2;
 
+    // Define a cor inicial da cabeca da cobra.
+    snake.tras->item.cor = 1 + rand() % CORES;
+
     // Define a direcao inicial de movimento.
     DIRECAO = RIGHT;
 
@@ -62,13 +65,31 @@ void DesenharComida() {
     if (CONSUMIDO) {
         // Gera coordenadas aleatorias para a comida.
         GerarComida();
+        
+        // Define o valor da variavel como falso.
+        CONSUMIDO = 0;
     }
 
-    // Define o valor da variavel como falso.
-    CONSUMIDO = 0;
-
     // Define a cor da comida.
-    glColor3f(1.0, 0.5, 0.5); 
+    if (comida.cor == VERMELHO) {
+        // Define a cor como VERMELHO.
+        glColor3f(1.0, 0.5, 0.5);
+    } else if (comida.cor == VERDE) {
+        // Define a cor como VERDE.
+        glColor3f(0.5, 1.0, 0.5);
+    } else if (comida.cor == AZUL) {
+        // Define a cor como AZUL.
+        glColor3f(0.5, 0.5, 1.0);
+    } else if (comida.cor == AMARELO) {
+        // Define a cor como AMARELO.
+        glColor3f(1.0, 1.0, 0.0);
+    } else if (comida.cor == MARROM) {
+        // Define a cor como MARROM.
+        glColor3f(0.4, 0.2, 0.2);
+    } else if (comida.cor == LILAS) {
+        // define a cor como LILAS.
+        glColor3f(2.0, 0.5, 1.5);
+    }
 
     // Desenha a comida.
     glRectd(comida.x, comida.y, comida.x + 1, comida.y + 1);
@@ -78,6 +99,7 @@ void GerarComida() {
     srand(time(NULL));
     comida.x = 1 + rand() % (LARGURA - 1);
     comida.y = 1 + rand() % (ALTURA - 1);
+    comida.cor = 1 + rand() % CORES;
 }
 
 void DesenharCobra() {
@@ -100,19 +122,58 @@ void DesenharCobra() {
         break;
     }
 
+    // Atualizar as cores dos segmentos do corpo da cobra.
+    AtualizarCoresSnake();
+
     // Celula auxiliar para percorrer a Fila e desenhar o corpo da snake.
     TCelula *SnakeCorpo = snake.frente;
 
     for (int i = 0; i < snake.tamanho; i++) {
         if (SnakeCorpo != snake.frente) {
             // Define a cor do corpo da snake.
-            glColor3f(0.6, 0.88, 0.6);
+            if (SnakeCorpo->item.cor == VERMELHO) {
+                // Define a cor como VERMELHO.
+                glColor3f(0.88, 0.6, 0.6);
+            } else if (SnakeCorpo->item.cor == VERDE) {
+                // Define a cor como VERDE.
+                glColor3f(0.6, 0.88, 0.6);
+            } else if (SnakeCorpo->item.cor == AZUL) {
+                // Define a cor como AZUL.
+                glColor3f(0.6, 0.6, 0.88);
+            } else if (SnakeCorpo->item.cor == AMARELO) {
+                // Define a cor como AMARELO.
+                glColor3f(88.0, 88.0, 0.2);
+            } else if (SnakeCorpo->item.cor == MARROM) {
+                // Define a cor como MARROM.
+                glColor3f(0.38, 0.18, 0.18);
+            } else if (SnakeCorpo->item.cor == LILAS) {
+                // define a cor como LILAS.
+                glColor3f(1.88, 0.6, 1.6);
+            }
 
             // Desenha o corpo da snake.
             glRectd(SnakeCorpo->item.x, SnakeCorpo->item.y, SnakeCorpo->item.x + 1, SnakeCorpo->item.y + 1);
         } else {
             // Define a cor da cabeca da snake.
-            glColor3f(0.5, 1.0, 0.5);
+            if (snake.tras->item.cor == VERMELHO) {
+                // Define a cor como VERMELHO.
+                glColor3f(1.0, 0.5, 0.5);
+            } else if (snake.tras->item.cor == VERDE) {
+                // Define a cor como VERDE.
+                glColor3f(0.5, 1.0, 0.5);
+            } else if (snake.tras->item.cor == AZUL) {
+                // Define a cor como AZUL.
+                glColor3f(0.5, 0.5, 1.0);
+            } else if (snake.tras->item.cor == AMARELO) {
+                // Define a cor como AMARELO.
+                glColor3f(1.0, 1.0, 0.0);
+            } else if (snake.tras->item.cor == MARROM) {
+                // Define a cor como MARROM.
+                glColor3f(0.4, 0.2, 0.2);
+            } else if (snake.tras->item.cor == LILAS) {
+                // define a cor como LILAS.
+                glColor3f(2.0, 0.5, 1.5);
+            }
 
             // Desenha a cabeca da snake.
             glRectd(snake.tras->item.x, snake.tras->item.y, snake.tras->item.x + 1, snake.tras->item.y + 1);
@@ -126,6 +187,27 @@ void DesenharCobra() {
 
     // Verifica se comeu a comida.
     VerificarComida();
+}
+
+void AtualizarCoresSnake() {
+    // Celula auxiliar para percorrer a Fila e atualizar as cores dos segmentos do corpo da cobra.
+    TCelula *Aux = snake.frente;
+
+    // Armazena a cor do primeiro segmento.
+    int corAnterior = Aux->item.cor;
+
+    while (Aux->prox != snake.tras) {
+        // Armazena a cor atual do segmento.
+        int corAtual = Aux->prox->item.cor;
+
+        // Atribuímos a cor anterior ao segmento atual.
+        Aux->prox->item.cor = corAnterior;
+        // Atribuimos a cor anterior para a cor atual.
+        corAnterior = corAtual;
+
+        // Avanca para a proxima celula da Fila.
+        Aux = Aux->prox;
+    }
 }
 
 void MoverCobra(int key) {
@@ -155,13 +237,6 @@ void MoverCobra(int key) {
             DIRECAO = RIGHT;
         }
         break;
-    default:
-        // Liberando a memoria alocada para a SNAKE.
-        LiberarFila(&snake);
-
-        // Finaliza a aplicacao.
-        exit(0);
-        break;
     }
 }
 
@@ -189,11 +264,8 @@ void VerificarColisoes() {
     // Verifica se a snake colidiu consigo mesma.
     for (int i = 0; i < snake.tamanho; i++) {
         if (snake.tras->item.x == Aux->item.x && snake.tras->item.y == Aux->item.y) {
-            // Libera a memoria alocada para a SNAKE.
-            LiberarFila(&snake);
-
-            // Finaliza a aplicacao.
-            exit(0);
+            // Libera a memoria alocada para a SNAKE e finaliza a aplicacao.
+            EncerrarJogo();
         }
         Aux = Aux->prox;
     }
@@ -207,6 +279,9 @@ void VerificarComida() {
     if ((snake.tras->item.x == comida.x) && (snake.tras->item.y == comida.y)) {
         CONSUMIDO = 1;
         SCORE++;
+        
+        // A cor da comida é inserida no final da cobra.
+        snake.frente->item.cor = comida.cor;
     } else {
         // Desenfileira a cauda para manter o tamanho da snake.
         Desenfileirar(&snake, &SnakeCauda->item);
@@ -224,4 +299,12 @@ void ConfigurarPlacar(char *string) {
 
     // Concatenando a string "textoScore" ao final de "string".
     strcat(string, textoScore);
+}
+
+void EncerrarJogo() {
+    // Liberando a memoria alocada para a SNAKE.
+    LiberarFila(&snake);
+
+    // Finaliza a aplicacao.
+    exit(0);
 }

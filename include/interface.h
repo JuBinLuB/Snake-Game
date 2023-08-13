@@ -16,6 +16,8 @@ void ConfigurarJanela();
 
 void TratarEventos();
 
+void Menu();
+
 void Inicializa();
 
 void Desenha();
@@ -27,5 +29,7 @@ void AlteraTamanhoJanela(GLsizei w, GLsizei h);
 void Timer(int valor);
 
 void TeclasEspeciais(int key, int x, int y);
+
+void Teclado(unsigned char key, int x, int y);
 
 #endif

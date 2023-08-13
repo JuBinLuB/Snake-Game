@@ -14,6 +14,8 @@
 #define LEFT 3
 #define RIGHT 4
 
+#define CORES 6
+
 void Configurar();
 
 void IniciarCampo(int x, int y);
@@ -28,6 +30,8 @@ void DesenharCobra();
 
 void GerarComida();
 
+void AtualizarCoresSnake();
+
 void MoverCobra(int key);
 
 void VerificarColisoes();
@@ -35,5 +39,7 @@ void VerificarColisoes();
 void VerificarComida();
 
 void ConfigurarPlacar(char *string);
+
+void EncerrarJogo();
 
 #endif // SNAKE_H_INCLUDED

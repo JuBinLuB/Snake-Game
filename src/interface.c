@@ -5,6 +5,9 @@
 
 #include "interface.h"
 
+// Variaveis globais.
+int MENU_ABERTO = 1;
+
 // Define o modo de operação da Glut.
 void ConfigurarJanela() {
     // Define as coordenadas X e Y onde ficara o canto superior esquerdo da janela.
@@ -30,6 +33,22 @@ void TratarEventos() {
 
     // Trata o evento de pressionar teclas especiais do teclado.
     glutSpecialFunc(TeclasEspeciais);
+
+    // Trata o evento de pressionar teclas ASCII.
+    glutKeyboardFunc(Teclado);
+}
+
+void Menu() {
+    // Define a cor do texto.
+    glColor3f(0.83, 0.82, 0.76);
+
+    // Exibicao da opcao de menu "STAR GAME" na tela usando caracteres bitmap.
+    glRasterPos2f((LARGURA - 4.95) / 2, (ALTURA / 2) + 2);
+    DesenhaTexto(GLUT_BITMAP_HELVETICA_18, "[SPACE] START GAME");
+
+    // Exibicao da opcao de menu "QUIT GAME" na tela usando caracteres bitmap.
+    glRasterPos2f((LARGURA - 4.95) / 2, (ALTURA / 2));
+    DesenhaTexto(GLUT_BITMAP_HELVETICA_18, "[ESC] QUIT GAME");
 }
 
 // Inicializacao de parametros.
@@ -49,24 +68,28 @@ void Desenha() {
     // Limpa a janela de visualizacao com a cor de fundo especificada.
     glClear(GL_COLOR_BUFFER_BIT);
 
-    // Funcoes diretamente relacionadas ao jogo SNAKE.
-    DesenharCampo();
-    DesenharCobra();
-    DesenharComida();
+    if (MENU_ABERTO) {
+        Menu();
+    } else {
+        // Funcoes diretamente relacionadas ao jogo SNAKE.
+        DesenharCampo();
+        DesenharCobra();
+        DesenharComida();
 
-    // Define a cor para o texto.
-    glColor3f(1.0, 1.0, 1.0);
+        // Define a cor para o texto.
+        glColor3f(1.0, 1.0, 1.0);
 
-    // String que sera exibida na tela.
-    char mensagemScore[20];
+        // String que sera exibida na tela.
+        char mensagemScore[20];
 
-    // Configura o SCORE que sera exibido na tela, armazenando-o na string "mensagemScore".
-    ConfigurarPlacar(mensagemScore);
+        // Configura o SCORE que sera exibido na tela, armazenando-o na string "mensagemScore".
+        ConfigurarPlacar(mensagemScore);
 
-    // Exibicao do SCORE na tela usando caracteres bitmap.
-    glRasterPos2f(((LARGURA - 2) / 2), ALTURA - 0.5);
-    DesenhaTexto(GLUT_BITMAP_HELVETICA_18, mensagemScore);
-    
+        // Exibicao do SCORE na tela usando caracteres bitmap.
+        glRasterPos2f(((LARGURA - 2) / 2), ALTURA - 0.5);
+        DesenhaTexto(GLUT_BITMAP_HELVETICA_18, mensagemScore);
+    }
+
     // Executa os comandos OpenGL.
     glutSwapBuffers();
 }
@@ -121,4 +144,16 @@ void Timer(int valor) {
 void TeclasEspeciais(int key, int x, int y) {
     // Funcao para efetuar a leitura dos dados e mover o objeto.
     MoverCobra(key);
+}
+
+void Teclado(unsigned char key, int x, int y) {
+    // Fecha o MENU e inicia a aplicacao ao pressionar a tecla "space".
+    if (key == 32) {
+        MENU_ABERTO = 0;
+    }
+    // Finaliza a aplicacao ao pressionar a tecla "esc".
+    if (key == 27) {
+        // Libera a memoria alocada para a SNAKE e finaliza a aplicacao.
+        EncerrarJogo();
+    }
 }

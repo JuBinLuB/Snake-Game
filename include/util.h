@@ -8,6 +8,9 @@ typedef enum {
     VERMELHO = 1,
     VERDE,
     AZUL,
+    AMARELO,
+    MARROM,
+    LILAS
 } TCor;
 
 typedef struct {
