@@ -9,7 +9,7 @@ typedef enum {
     VERDE,
     AZUL,
     AMARELO,
-    MARROM,
+    CIANO,
     LILAS
 } TCor;
 

@@ -83,9 +83,9 @@ void DesenharComida() {
     } else if (comida.cor == AMARELO) {
         // Define a cor como AMARELO.
         glColor3f(1.0, 1.0, 0.0);
-    } else if (comida.cor == MARROM) {
-        // Define a cor como MARROM.
-        glColor3f(0.4, 0.2, 0.2);
+    } else if (comida.cor == CIANO) {
+        // Define a cor como CIANO.
+        glColor3f(0.0, 1.0, 1.0);
     } else if (comida.cor == LILAS) {
         // define a cor como LILAS.
         glColor3f(2.0, 0.5, 1.5);
@@ -143,9 +143,9 @@ void DesenharCobra() {
             } else if (SnakeCorpo->item.cor == AMARELO) {
                 // Define a cor como AMARELO.
                 glColor3f(88.0, 88.0, 0.2);
-            } else if (SnakeCorpo->item.cor == MARROM) {
-                // Define a cor como MARROM.
-                glColor3f(0.38, 0.18, 0.18);
+            } else if (SnakeCorpo->item.cor == CIANO) {
+                // Define a cor como CIANO.
+                glColor3f(0.0, 1.0, 1.0);
             } else if (SnakeCorpo->item.cor == LILAS) {
                 // define a cor como LILAS.
                 glColor3f(1.88, 0.6, 1.6);
@@ -167,9 +167,9 @@ void DesenharCobra() {
             } else if (snake.tras->item.cor == AMARELO) {
                 // Define a cor como AMARELO.
                 glColor3f(1.0, 1.0, 0.0);
-            } else if (snake.tras->item.cor == MARROM) {
-                // Define a cor como MARROM.
-                glColor3f(0.4, 0.2, 0.2);
+            } else if (snake.tras->item.cor == CIANO) {
+                // Define a cor como CIANO.
+                glColor3f(0.5, 1.0, 1.0);
             } else if (snake.tras->item.cor == LILAS) {
                 // define a cor como LILAS.
                 glColor3f(2.0, 0.5, 1.5);
