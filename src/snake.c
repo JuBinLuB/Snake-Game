@@ -142,10 +142,10 @@ void DesenharCobra() {
                 glColor3f(0.6, 0.6, 0.88);
             } else if (SnakeCorpo->item.cor == AMARELO) {
                 // Define a cor como AMARELO.
-                glColor3f(88.0, 88.0, 0.2);
+                glColor3f(88.0, 88.0, 0.6);
             } else if (SnakeCorpo->item.cor == CIANO) {
                 // Define a cor como CIANO.
-                glColor3f(0.0, 1.0, 1.0);
+                glColor3f(0.6, 0.88, 0.88);
             } else if (SnakeCorpo->item.cor == LILAS) {
                 // define a cor como LILAS.
                 glColor3f(1.88, 0.6, 1.6);
@@ -157,19 +157,19 @@ void DesenharCobra() {
             // Define a cor da cabeca da snake.
             if (snake.tras->item.cor == VERMELHO) {
                 // Define a cor como VERMELHO.
-                glColor3f(1.0, 0.4, 0.4);
+                glColor3f(1.0, 0.2, 0.2);
             } else if (snake.tras->item.cor == VERDE) {
                 // Define a cor como VERDE.
-                glColor3f(0.4, 1.0, 0.4);
+                glColor3f(0.2, 1.0, 0.2);
             } else if (snake.tras->item.cor == AZUL) {
                 // Define a cor como AZUL.
-                glColor3f(0.4, 0.4, 1.0);
+                glColor3f(0.2, 0.2, 1.0);
             } else if (snake.tras->item.cor == AMARELO) {
                 // Define a cor como AMARELO.
                 glColor3f(1.0, 1.0, 0.0);
             } else if (snake.tras->item.cor == CIANO) {
                 // Define a cor como CIANO.
-                glColor3f(0.4, 1.0, 1.0);
+                glColor3f(0.2, 1.0, 1.0);
             } else if (snake.tras->item.cor == LILAS) {
                 // define a cor como LILAS.
                 glColor3f(2.0, 0.5, 1.5);
