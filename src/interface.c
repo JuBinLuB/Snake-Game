@@ -69,6 +69,7 @@ void Desenha() {
     glClear(GL_COLOR_BUFFER_BIT);
 
     if (MENU_ABERTO) {
+        // Exibe o "Menu Principal" ao executar a aplicacao.
         MenuPrincipal();
     } else {
         // Funcoes diretamente relacionadas ao SNAKE.
@@ -146,6 +147,7 @@ void TeclasEspeciais(int key, int x, int y) {
     MoverCobra(key);
 }
 
+// Funcao callback chamada para tratar o evento de teclado.
 void Teclado(unsigned char key, int x, int y) {
     // Fecha o MENU e inicia a aplicacao ao pressionar a tecla "space".
     if (key == 32) {
