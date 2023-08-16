@@ -8,7 +8,7 @@
 // Variaveis globais.
 int MENU_ABERTO = 1;
 
-// Define o modo de operação da Glut.
+// Define o modo de operacao da Glut.
 void ConfigurarJanela() {
     // Define as coordenadas X e Y onde ficara o canto superior esquerdo da janela.
     glutInitWindowPosition(450, 100);
@@ -28,7 +28,7 @@ void TratarEventos() {
     // Trata o evento referente ao redimensionamento da janela.
     glutReshapeFunc(AlteraTamanhoJanela);
 
-    // Responsavel por fazer a GLUT esperar milisegundos antes de chamar a função.
+    // Responsavel por fazer a GLUT esperar milisegundos antes de chamar a funcao.
     glutTimerFunc(0, Timer, 0);
 
     // Trata o evento de pressionar teclas especiais do teclado.

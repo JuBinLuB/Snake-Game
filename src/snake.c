@@ -204,7 +204,7 @@ void AtualizarCoresCobra() {
         // Atribui a cor do segmento anterior ao segmento atual.
         Aux->prox->item.cor = corAnterior;
 
-        // Atualiza a cor anterior para a cor atual
+        // Atualiza a cor anterior para a cor atual.
         corAnterior = corAtual;
 
         // Avanca "Aux" para a proxima posicao da Fila.

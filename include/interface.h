@@ -32,4 +32,4 @@ void TeclasEspeciais(int key, int x, int y);
 
 void Teclado(unsigned char key, int x, int y);
 
-#endif
+#endif // INTERFACE_H_INCLUDED

@@ -9,7 +9,7 @@ int main(int argc, char **argv) {
     // Inicializacao da GLUT.
     glutInit(&argc, argv);
 
-    // Define o modo de operação da Glut.
+    // Define o modo de operacao da Glut.
     glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
 
     // Configuracoes da Janela.
