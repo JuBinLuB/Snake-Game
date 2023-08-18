@@ -42,7 +42,7 @@ Seta para a esquerda: Mover para a esquerda
 
 Seta para a direita: Mover para a direita
 
-Pressione a tecla ESC para sair do jogo.
+Tecla ESC: Sair do jogo
 
 ## Créditos
 
@@ -52,8 +52,12 @@ Este jogo foi desenvolvido como parte do trabalho prático da disciplina de Algo
 
 Este projeto pode ser expandido e aprimorado de várias maneiras. Algumas ideias de melhorias futuras incluem:
   
-  ● Implementar níveis de dificuldade crescentes.
+  ● Implementar níveis de dificuldade crescentes para desafiar o jogador.
+  
+  ● Criar cenários temáticos com diferentes layouts e obstáculos para diversificar a jogabilidade.
+  
+  ● Utilizar texturas detalhadas para a cobra, comida e cenário, aprimorando a experiência visual.
+  
+  ● Criar um menu interativo na interface para permitir que o jogador escolha opções de configuração, visualize recordes e acesse instruções do jogo.
 
-  ● Implementar uma interface de usuário.
-
-Divirta-se jogando Snake e explorando os conceitos de programação por trás do jogo!
+Divirta-se jogando Snake e explorando os conceitos de programação por trás do jogo! Para mais detalhes, consulte o relatório de documentação do projeto [aqui](https://github.com/JuBinLuB/Snake-Game/files/12374955/Trabalho_Pratico_Estrutura_de_Dados__Game_Snake.pdf).
