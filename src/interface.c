@@ -110,7 +110,7 @@ void AlteraTamanhoJanela(GLsizei w, GLsizei h) {
         h = 1;
     }
 
-    // Especifica as dimensões da Viewport(janela onde será feito o desenho).
+    // Especifica as dimensoes da Viewport(janela onde sera feito o desenho).
     glViewport(0, 0, w, h);
 
     // Inicializa o sistema de coordenadas.
@@ -119,16 +119,16 @@ void AlteraTamanhoJanela(GLsizei w, GLsizei h) {
     // Substitui a matriz atual pela matriz de identidade.
     glLoadIdentity();
 
-    // Descreve uma matriz de perspectiva que produz uma projeção paralela.
+    // Descreve uma matriz de perspectiva que produz uma projecao paralela.
     if (w <= h) {
-        // Ajusta a projeção para manter a proporção da janela.
+        // Ajusta a projecao para manter a proporcao da janela.
         gluOrtho2D(0.0, LARGURA, 0.0, ALTURA * h / w);
     } else {
         // Ajusta a projeção em modo janela cheia.
         gluOrtho2D(((-LARGURA * w / h) + 20) / 2, ((LARGURA * w / h) + 20) / 2, 0.0, ALTURA);
     }
 
-    // Avisa a OpenGL que todas as futuras alterações irão afetar o que é desenhado.
+    // Avisa a OpenGL que todas as futuras alteracoes irao afetar o que e' desenhado.
     glMatrixMode(GL_MODELVIEW);
 }
 
