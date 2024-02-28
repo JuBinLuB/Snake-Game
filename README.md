@@ -6,9 +6,9 @@ Este projeto é um jogo de Snake desenvolvido como parte do trabalho prático da
 
 Certifique-se de ter os seguintes itens instalados antes de executar o jogo:
 
-  ● Compilador C/C++
+  - Compilador C/C++
   
-  ● Biblioteca FreeGLUT
+  - Biblioteca FreeGLUT
 
 ## Como Compilar e Executar
 
@@ -18,46 +18,46 @@ Certifique-se de ter os seguintes itens instalados antes de executar o jogo:
 
   3. Use o arquivo Makefile para compilar o jogo, digitando no terminal o seguinte comando:
 
-     ```mingw32-make```
+     `mingw32-make`
 
      ou
 
-     ```Make```
+     `Make`
   
   5. Após a compilação bem-sucedida, execute o jogo com o seguinte comando:
 
-     ```mingw32-make run```
+     `mingw32-make run`
 
      ou
 
-     ```Make run```
+     `Make run`
 
 ## Controles
 
-Seta para cima: Mover para cima
+**Seta para cima**: Mover para cima
 
-Seta para baixo: Mover para baixo
+**Seta para baixo**: Mover para baixo
 
-Seta para a esquerda: Mover para a esquerda
+**Seta para a esquerda**: Mover para a esquerda
 
-Seta para a direita: Mover para a direita
+**Seta para a direita**: Mover para a direita
 
-Tecla ESC: Sair do jogo
+**Tecla ESC**: Sair do jogo
 
 ## Créditos
 
-Este jogo foi desenvolvido como parte do trabalho prático da disciplina de Algoritmos e Estrutura de Dados I da UFOP, utilizando a biblioteca FreeGLUT. A implementação do Snake Game foi uma ótima oportunidade de praticar conceitos de programação e estruturas de dados.
+Este jogo foi desenvolvido como parte do trabalho prático da disciplina de Algoritmos e Estrutura de Dados I da UFOP, utilizando a biblioteca FreeGLUT. A implementação do Snake Game foi uma excelente oportunidade de praticar conceitos de programação e estruturas de dados.
 
 ## Melhorias Futuras
 
 Este projeto pode ser expandido e aprimorado de várias maneiras. Algumas ideias de melhorias futuras incluem:
   
-  ● Implementar níveis de dificuldade crescentes para desafiar o jogador.
+  - **Níveis de Dificuldade:** Implementar níveis de dificuldade crescentes para desafiar o jogador.
   
-  ● Criar cenários temáticos com diferentes layouts e obstáculos para diversificar a jogabilidade.
+  - **Cenários Temáticos:** Criar cenários temáticos com diferentes layouts e obstáculos para diversificar a jogabilidade.
   
-  ● Utilizar texturas detalhadas para a cobra, comida e cenário, aprimorando a experiência visual.
+  - **Texturas Detalhadas:** Utilizar texturas detalhadas para a cobra, comida e cenário, aprimorando a experiência visual.
   
-  ● Criar um menu interativo na interface para permitir que o jogador escolha opções de configuração, visualize recordes e acesse instruções do jogo.
+  - **Menu Interativo:** Criar um menu interativo na interface para permitir que o jogador escolha opções de configuração, visualize recordes e acesse instruções do jogo.
 
 Divirta-se jogando Snake e explorando os conceitos de programação por trás do jogo! Para mais detalhes, consulte o relatório de documentação do projeto [aqui](https://github.com/JuBinLuB/Snake-Game/files/12374955/Trabalho_Pratico_Estrutura_de_Dados__Game_Snake.pdf).
